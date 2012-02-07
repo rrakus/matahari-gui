@@ -112,6 +112,9 @@ class MainWindow:
         self.cmd_mn = builder.get_object("label_method_name")
         self.cmd_ls = builder.get_object("label_status")
 
+        self.main_window.resize(700, 500)
+        self.cmd.resize(400, 300)
+
         self._broker = None
         self._session = None
 
