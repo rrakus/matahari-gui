@@ -238,6 +238,7 @@ class MainWindow:
     def cmd_close(self, *args):
         """close/hide call method dialog"""
         self.cmd.hide()
+        return True
 
     def cmd_execute(self, *args):
         """execute method with specified arguments"""
