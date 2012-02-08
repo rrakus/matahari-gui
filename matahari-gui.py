@@ -19,20 +19,19 @@
 
 
 from gi.repository import Gtk
-from gi.repository.GObject import gobject
-import gobject
+from gi.repository import GObject
 import os
 import qmf.console as qc
 import uuid
 from ast import literal_eval
 
-class MyQmfClass(gobject.GObject):
+class MyQmfClass(GObject.GObject):
     def __init__(self, qmf_object):
         """
         Init class with provided qmfobject, which is got from
         qmf.session.getObjects
         """
-        gobject.GObject.__init__(self)
+        GObject.GObject.__init__(self)
         self.qmf_object = qmf_object
 
 # Got from qpid/managementdata.py
@@ -263,6 +262,5 @@ class MainWindow:
         self.cmd_ls.set_text("%s (%d)" % (result.text, result.status))
 
 if __name__ == "__main__":
-    gobject.type_register(MyQmfClass)
     MW = MainWindow()
     MW.run()
