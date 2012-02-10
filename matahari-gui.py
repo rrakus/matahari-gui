@@ -1,22 +1,22 @@
 #!/usr/bin/python
 # matahari-gui.py - GUI for matahari
-# Copyright (c) 2012 Red Hat, Inc.
-# Authors: Roman Rakus <rrakus@redhat.com>
-#
-# This program is free software; you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation; either version 2 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program; if not, write to the Free Software
-# Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+_COPYRIGHT = "Copyright (c) 2012 Red Hat, Inc."
+_AUTHORS = ["Roman Rakus <rrakus@redhat.com>"]
+_LICENSE = \
+"""This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
 
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA."""
+_VERSION = "0.0.1"
 
 from gi.repository import Gtk
 from gi.repository import GObject
@@ -89,6 +89,7 @@ class MainWindow:
     """
     def __init__(self):
         builder = Gtk.Builder()
+        self.builder = builder
         if os.access("./matahari-gui.ui", os.F_OK):
             builder.add_from_file ("./matahari-gui.ui")
         else:
@@ -102,6 +103,7 @@ class MainWindow:
         self.label_broker = builder.get_object("label_broker")
         self.treestore_agents = builder.get_object("treestore_agents")
         self.treeview_agents = builder.get_object("treeview_agents")
+
 
         # Call method dialog
         self.cmd = builder.get_object("dialog_call_method")
@@ -125,6 +127,16 @@ class MainWindow:
            "object": None,
            "property": None,
            "method": self.call_method}
+
+    def show_about(self, *args):
+        about = Gtk.AboutDialog()
+        about.set_authors(_AUTHORS)
+        about.set_copyright(_COPYRIGHT)
+        about.set_license(_LICENSE)
+        about.set_program_name("Matahari GUI")
+        about.set_version(_VERSION)
+        about.run()
+        about.hide()
 
     def run(self):
         """
