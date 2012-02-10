@@ -32,6 +32,7 @@
                         <property name="use_action_appearance">False</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
+                        <property name="always_show_image">True</property>
                         <signal name="activate" handler="destroy" swapped="no"/>
                       </object>
                     </child>
@@ -58,6 +59,7 @@
                         <property name="use_action_appearance">False</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
+                        <property name="always_show_image">True</property>
                         <signal name="activate" handler="show_about" swapped="no"/>
                       </object>
                     </child>
